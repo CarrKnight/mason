@@ -4,22 +4,43 @@
 	xmlns="http://maven.apache.org/POM/4.0.0"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<modelVersion>4.0.0</modelVersion>
-	
+	<name>Mason Simulation Toolkit</name>
+	<description>
+		MASON 22 is a fast agent-based simulation library core in Java, designed to be the foundation for large custom-purpose Java simulations, and also to provide more than enough functionality for many lightweight simulation needs.</description>
+
+	<developers>
+		<developer>
+			<id>sean</id>
+			<name>Sean Luke</name>
+			<email>sean@cs.gmu.edu</email>
+			<roles>
+				<role>Author</role>
+			</roles>
+		</developer>
+	</developers>
+
 	<parent>
 		<groupId>cs.gmu.edu.eclab</groupId>
 		<artifactId>mason-build</artifactId>
-		<version>20</version>
+		<version>22</version>
 	</parent>
 	
 	<artifactId>mason</artifactId>
-	<name>mason</name>
 	<packaging>jar</packaging>
-	<url>http://maven.apache.org</url>
+	<url>https://cs.gmu.edu/~eclab/projects/mason/</url>
 
 	<properties>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
 	</properties>
+
+	<licenses>
+		<license>
+			<name>Academic Free License v3.0</name>
+			<url>https://opensource.org/licenses/AFL-3.0</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
 
 	<build>
 		<resources>
@@ -30,6 +51,41 @@
 				<directory>src/main/resources</directory>
 			</resource>
 		</resources>
+		<plugins>
+
+			<!-- Plugin to package the source code -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-source-plugin</artifactId>
+				<version>3.2.1</version>
+				<executions>
+					<execution>
+						<id>attach-sources</id>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+			<!-- Plugin to generate and package the Javadoc -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<configuration>
+					<doclint>none</doclint>
+				</configuration>
+				<version>3.6.3</version>
+				<executions>
+					<execution>
+						<id>attach-javadocs</id>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
 	</build>
 	<repositories>
 		<repository>
